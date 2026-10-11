@@ -4,7 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>আমার প্রথম ওয়েবসাইট</title>
-  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; line-height: 1.6; }
+    header { background-color: #2c3e50; color: white; padding: 1rem 0; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+    .nav-links { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
+    .nav-links a { color: white; text-decoration: none; font-weight: bold; }
+    .nav-links a:hover { text-decoration: underline; }
+    .hero { text-align: center; padding: 60px 20px; background: white; margin: 20px auto; max-width: 800px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    button { padding: 12px 24px; font-size: 16px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+    button:hover { background-color: #2980b9; }
+    .output { margin-top: 20px; font-weight: bold; color: #27ae60; font-size: 18px; }
+    .card-section { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 20px; max-width: 1000px; margin: 0 auto; }
+    .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); flex: 1; min-width: 250px; text-align: center; }
+    .contact { text-align: center; padding: 40px 20px; }
+    footer { text-align: center; padding: 20px; background-color: #2c3e50; color: white; margin-top: 40px; }
+  </style>
 </head>
 <body>
 
@@ -49,9 +65,33 @@
   </main>
 
   <footer>
-    <p>&copy; {{ year }} আমার সাইট। সর্বস্বত্ব সংরক্ষিত।</p>
+    <p>&copy; <span id="year"></span> আমার সাইট। সর্বস্বত্ব সংরক্ষিত।</p>
   </footer>
 
-  <script src="/static/script.js"></script>
+  <script>
+    // ১. সাল স্বয়ংক্রিয়ভাবে বসানোর জন্য জাভাস্ক্রিপ্ট
+    document.getElementById('year').innerText = new Date().getFullYear();
+
+    // ২. সার্ভারকে হ্যালো বলার ফাংশন
+    document.getElementById('greetBtn').addEventListener('click', function() {
+      const outputDiv = document.getElementById('output');
+      outputDiv.innerText = "সার্ভারের সাথে সংযোগ করা হচ্ছে... (একটু সময় লাগতে পারে)";
+      
+      // ⚠️ IMPORTANT: এখানে আপনার Render.com এর লিংকটি বসাতে হবে
+      // উদাহরণ: 'https://my-python-server.onrender.com/api/hello'
+      const RENDER_BACKEND_URL = 'https://python-ryq6.onrender.com';
+
+      fetch(RENDER_BACKEND_URL)
+        .then(response => response.json())
+        .then(data => {
+          outputDiv.innerText = data.message;
+        })
+        .catch(error => {
+          outputDiv.innerText = "সার্ভারের সাথে সংযোগ করা যাচ্ছে না! লিংকটি চেক করুন।";
+          console.error('Error:', error);
+        });
+    });
+  </script>
+
 </body>
 </html>
