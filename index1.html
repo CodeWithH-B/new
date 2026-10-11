@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>আমার প্রথম ওয়েবসাইট</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">🌐 আমার সাইট</div>
+      <ul class="nav-links">
+        <li><a href="#home">হোম</a></li>
+        <li><a href="#about">সম্পর্কে</a></li>
+        <li><a href="#contact">যোগাযোগ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <h1>স্বাগতম!</h1>
+      <p>এটি একটি সাধারণ ওয়েবসাইট, যা একটি Python Flask সার্ভার থেকে পরিবেশন করা হচ্ছে।</p>
+      <button id="greetBtn">সার্ভারকে হ্যালো বলুন</button>
+      <p id="output" class="output"></p>
+    </section>
+
+    <section id="about" class="card-section">
+      <div class="card">
+        <h2>⚡ দ্রুত</h2>
+        <p>হালকা ওজনের এবং দ্রুত লোড হয়।</p>
+      </div>
+      <div class="card">
+        <h2>📱 রেসপন্সিভ</h2>
+        <p>মোবাইল ও ডেস্কটপ—সব জায়গায় কাজ করে।</p>
+      </div>
+      <div class="card">
+        <h2>🔧 সহজ</h2>
+        <p>মাত্র কয়েকটি ফাইলেই পুরো সাইট।</p>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>যোগাযোগ</h2>
+      <p>ইমেইল: hello@example.com</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; {{ year }} আমার সাইট। সর্বস্বত্ব সংরক্ষিত।</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
